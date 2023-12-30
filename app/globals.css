@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
