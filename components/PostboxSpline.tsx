@@ -1,4 +1,7 @@
-import { postboxPageActions } from "@/lib/state/postbox-page";
+import {
+  postboxPageActions,
+  usePostboxPageState,
+} from "@/lib/state/postbox-page";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 import { Application as SplineApplication } from "@splinetool/runtime";
 
@@ -8,6 +11,7 @@ export interface PostboxSplineProps {
 
 export const PostboxSpline = (props: PostboxSplineProps) => {
   const { splineRef } = props;
+  const postboxPageState = usePostboxPageState();
   return (
     <Spline
       scene="https://prod.spline.design/49K5A8xapEdTSHlv/scene.splinecode"
@@ -24,6 +28,12 @@ export const PostboxSpline = (props: PostboxSplineProps) => {
           event.target.name === "User Message" ||
           event.target.name === "To Ment"
         ) {
+          if (
+            postboxPageState.publishedUrl &&
+            postboxPageState.publishedUrl.length !== 0 &&
+            postboxPageState.publishedUrl !== "https://posts.run/"
+          )
+            return;
           postboxPageActions.setIsModifyModalOpen(true);
         }
         if (event.target.name === "Share OK Text") {

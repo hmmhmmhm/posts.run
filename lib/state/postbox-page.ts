@@ -5,6 +5,7 @@ export const postboxPageState = proxy({
   isLetterPressed: false,
   isSplineLoaded: false,
   isModifyModalOpen: false,
+  choosedModifyModalSubMenu: "message" as "message" | "images",
   publishedUrl: "https://posts.run/",
 });
 
@@ -17,6 +18,11 @@ export const postboxPageActions = {
   },
   setIsModifyModalOpen(isModifyModalOpen: boolean) {
     postboxPageState.isModifyModalOpen = isModifyModalOpen;
+  },
+  setChoosedModifyModalSubMenu(
+    choosedModifyModalSubMenu: "message" | "images"
+  ) {
+    postboxPageState.choosedModifyModalSubMenu = choosedModifyModalSubMenu;
   },
   shareToSNS() {
     navigator
