@@ -28,7 +28,7 @@ export const PostboxSpline = (props: PostboxSplineProps) => {
         }
         if (event.target.name === "Share OK Text") {
           console.log("공유 기능 동작");
-          // TODO 공유 native 기능 동작
+          postboxPageActions.shareToSNS();
         }
       }}
       onMouseMove={() => {

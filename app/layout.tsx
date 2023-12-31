@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import { ClientProvider } from "@/components/ClientProvider";
 
 export const metadata: Metadata = {
   title: "새해인사 우체통",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <ClientProvider>{children}</ClientProvider>
+      </body>
     </html>
   );
 }
