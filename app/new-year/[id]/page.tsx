@@ -25,8 +25,8 @@ export default function NewYearPage({ params }: { params: { id: string } }) {
   });
 
   return (
-    <main className="bg-[#E8C9A4] size-full h-screen overflow-hidden">
-      <div className="absolute size-full h-screen flex justify-center items-center">
+    <main className="bg-[#E8C9A4] size-full mobile-full overflow-hidden">
+      <div className="absolute size-full mobile-full flex justify-center items-center">
         {!postboxPage.isSplineLoaded && (
           <CircularProgress className="text-white" size={64} />
         )}

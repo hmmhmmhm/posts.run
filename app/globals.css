@@ -31,3 +31,7 @@ body {
     opacity: 1;
   }
 }
+
+.mobile-full {
+  height: calc(var(--vh, 1vh) * 100);
+}
