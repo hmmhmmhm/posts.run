@@ -16,6 +16,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.0.17",
     "@supabase/supabase-js": "^2.39.1",
+    "@vercel/analytics": "^1.1.1",
     "ajv": "^8.12.0",
     "konsta": "^3.1.2",
     "nanoid": "^5.0.4",

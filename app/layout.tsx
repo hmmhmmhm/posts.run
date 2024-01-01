@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { ClientProvider } from "@/components/ClientProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 export const viewport: Viewport = {
   themeColor: "black",
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <ClientProvider>{children}</ClientProvider>
+        <Analytics />
       </body>
     </html>
   );
