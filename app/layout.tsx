@@ -1,6 +1,12 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ClientProvider } from "@/components/ClientProvider";
+
+export const viewport: Viewport = {
+  themeColor: "black",
+  viewportFit: "cover",
+  width: "400",
+};
 
 export const metadata: Metadata = {
   title: "새해인사 우체통",

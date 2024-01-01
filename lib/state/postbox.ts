@@ -32,9 +32,8 @@ export const usePostboxInSpline = ({
   splineRef: MutableRefObject<SplineApplication | null>;
 }) => {
   useEffect(() => {
-    if (postbox.message?.length > 0) {
+    if (postbox.message?.length > 0)
       splineRef.current?.setVariable("User Message", postbox.message);
-    }
   }, [postbox?.message]);
   useEffect(() => {
     if (postbox.to?.length > 0)
