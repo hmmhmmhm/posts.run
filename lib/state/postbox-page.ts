@@ -77,9 +77,7 @@ export const postboxPageActions = {
         hashtags: "새해인사,신년인사,새해,신년",
       })
       .catch(() => {
-        alert(
-          "공유하기를 지원하지 않는 브라우저에요. 주소창의 URL을 직접 복사해서 공유해주세요."
-        );
+        console.log(e);
       });
   },
   async generateAIMessage() {
@@ -169,7 +167,6 @@ export const postboxPageActions = {
     postboxPageState.isPublishing = true;
 
     try {
-      // TODO 실제 업로드 코드 작성
       const response = await fetch("/api/new-year/publish-card", {
         method: "POST",
         body: JSON.stringify({
@@ -192,6 +189,13 @@ export const postboxPageActions = {
     postboxPageState.isPublishing = false;
     postboxPageState.isModifyModalOpen = false;
     postboxPageState.isNeedToShowPublishedDialog = true;
+
+    if (
+      postboxPageState.publishedUrl &&
+      postboxPageState.publishedUrl.length !== 0 &&
+      postboxPageState.publishedUrl !== "https://posts.run/"
+    )
+      postboxPageActions.shareToSNS();
   },
   closePublishedDialog() {
     postboxPageState.isNeedToShowPublishedDialog = false;
