@@ -1,10 +1,6 @@
 import { uploadImageFile } from "@/lib/storage/r2Client";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
