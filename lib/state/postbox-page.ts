@@ -76,7 +76,7 @@ export const postboxPageActions = {
         url: postboxPageState.publishedUrl,
         hashtags: "새해인사,신년인사,새해,신년",
       })
-      .catch(() => {
+      .catch((e) => {
         console.log(e);
       });
   },
