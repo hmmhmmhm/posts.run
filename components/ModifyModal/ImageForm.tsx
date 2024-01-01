@@ -73,7 +73,7 @@ export const ImageForm = () => {
           }}
           disabled={postboxState.images.length >= 4}
         >
-          A.I로 자동으로 이미지 생성하기
+          A.I로 자동으로 이미지 생성하기 (최대 15초 소요)
         </Button>
       </Block>
 
