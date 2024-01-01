@@ -17,19 +17,27 @@ export const uploadImageFile = async ({
   buffer,
   folder,
   info,
+  compress = true,
 }: {
   buffer: ArrayBuffer;
   folder: string;
   info?: string;
+  compress?: boolean;
 }): Promise<string> => {
   const imageId = nanoid();
-  const compressedBuffer = await sharp(buffer).webp().toBuffer();
+  let compressedBuffer: Buffer;
+  if (compress) {
+    compressedBuffer = await sharp(buffer).webp().toBuffer();
+  } else {
+    compressedBuffer = Buffer.from(buffer);
+  }
+
   const command: PutObjectCommand = new PutObjectCommand({
     Bucket: process.env.R2_BUCKET_NAME!,
     Key: `${folder}/${imageId}`,
     Body: compressedBuffer,
     ACL: "public-read",
-    ContentType: "image/webp",
+    ContentType: compress ? "image/webp" : "image/png",
     ...(info && { Metadata: { info } }),
   });
   await r2Client.send(command);

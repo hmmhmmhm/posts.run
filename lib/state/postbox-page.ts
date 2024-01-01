@@ -73,11 +73,10 @@ export const postboxPageActions = {
         url: postboxPageState.publishedUrl,
         hashtags: "새해인사,신년인사,새해,신년",
       })
-      .catch((error) => {
+      .catch(() => {
         alert(
           "공유하기를 지원하지 않는 브라우저에요. 주소창의 URL을 직접 복사해서 공유해주세요."
         );
-        console.log(error);
       });
   },
   async generateAIMessage() {
@@ -125,11 +124,17 @@ export const postboxPageActions = {
 
     postboxPageState.isUploadingImages = true;
 
-    // TODO 목업 제거
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
     try {
-      // TODO 실제 업로드 코드 작성
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/new-year/upload-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      const { uploadedImageUrl: _uploadedImageUrl } = await response.json();
+      if (_uploadedImageUrl) uploadedImageUrl = _uploadedImageUrl;
     } catch (e) {}
 
     postboxPageState.isUploadingImages = false;

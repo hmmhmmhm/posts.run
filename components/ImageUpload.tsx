@@ -19,6 +19,7 @@ export const ImageUpload = (props: ImageUploadProps) => {
           if (onChange) onChange(event);
         }}
         disabled={!!isImageUploaded}
+        accept="image/*"
       />
       <div className="flex flex-col items-center justify-center">
         {isImageUploaded ? (
