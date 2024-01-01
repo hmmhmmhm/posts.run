@@ -84,15 +84,19 @@ export const postboxPageActions = {
     let aiMessage = "새해 복 많이 받으세요!";
     postboxPageState.isCreatingAIMessage = true;
 
-    // TODO 목업 제거
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
     try {
-      // TODO 실제 A.I 이미지 생성 코드 작성
+      const response = await fetch("/api/new-year/create-message", {
+        method: "POST",
+      });
+
+      const { generatedMessage } = await response.json();
+      if (generatedMessage) aiMessage = generatedMessage;
     } catch (e) {}
 
     postboxPageState.isCreatingAIMessage = false;
     postboxState.message = aiMessage;
+
+    return aiMessage;
   },
   async generateAIImage() {
     let uploadedImageUrl = "https://placehold.co/600x400";

@@ -90,11 +90,11 @@ export const MessageForm = () => {
           large
           className="w-full"
           onClick={async () => {
-            await postboxPageActions.generateAIMessage();
+            const message = await postboxPageActions.generateAIMessage();
             const element = document.querySelector(
               "#new-year-message > * > * > * > textarea"
             ) as HTMLTextAreaElement;
-            if (element) element.value = postboxState.message;
+            if (element) element.value = message;
           }}
         >
           A.I로 신년인사 메세지 생성하기
