@@ -39,6 +39,8 @@ export const MessageForm = () => {
           label="받는 분 (필수)"
           type="text"
           placeholder="당신에게"
+          className="max-w-xs sm:max-w-none"
+          inputClassName="!text-2xs sm:!text-xs md:!text-sm"
           onChange={(event) => {
             if (event.target.value.length > 20) {
               event.target.value = event.target.value.slice(0, 20);
@@ -55,7 +57,7 @@ export const MessageForm = () => {
           type="textarea"
           label="신년인사 메세지 (필수)"
           placeholder="여기에 메세지를 작성해주세요."
-          inputClassName="!h-36 resize-none"
+          inputClassName="!h-36 resize-none max-w-xs sm:max-w-none !text-2xs sm:!text-xs md:!text-sm leading-relaxed"
           info={`현재 ${postboxState.message.length}자 / 80자`}
           onChange={(event) => {
             // * 메세지 길이 80자로 제한
@@ -102,7 +104,7 @@ export const MessageForm = () => {
       <Block strong insetIos outline className="space-y-2">
         <Button
           large
-          className="w-full"
+          className="w-full text-2xs sm:text-base"
           onClick={async () => {
             const message = await postboxPageActions.generateAIMessage();
             const element = document.querySelector(

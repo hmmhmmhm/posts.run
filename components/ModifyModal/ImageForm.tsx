@@ -17,11 +17,15 @@ export const ImageForm = () => {
       <Backdrop open={postboxPageState.isUploadingImages} className="z-20">
         <div className="flex flex-col items-center space-y-4">
           <CircularProgress className="text-white" size={64} />
-          <p className="text-white">이미지를 추가하는 중입니다.</p>
+          <p className="text-white text-2xs sm:text-sm">
+            이미지를 추가하는 중입니다.
+          </p>
         </div>
       </Backdrop>
 
-      <BlockTitle className="text-black">이미지 업로드</BlockTitle>
+      <BlockTitle className="text-black !text-xs !sm:text-sm">
+        이미지 업로드
+      </BlockTitle>
       {postboxState.images.map((imageUrl, index) => (
         <Fragment key={index}>
           <Block strong insetIos className="space-y-2" outline key={index}>
@@ -58,7 +62,7 @@ export const ImageForm = () => {
       )}
 
       <Block strong insetIos className="space-y-2" outline>
-        <p className="text-gray-600 text-xs">
+        <p className="text-gray-600 text-2xs sm:text-sm leading-relaxed">
           이미지는 최대 4장까지 추가가 가능하며, 생성된 이미지는 차례대로
           슬라이드되어 표시될거에요. (A.I 이미지도 4개까지만 추가 가능해요.)
         </p>
@@ -67,7 +71,7 @@ export const ImageForm = () => {
       <Block strong insetIos outline className="space-y-2">
         <Button
           large
-          className="w-full"
+          className="w-full text-2xs sm:text-sm"
           onClick={() => {
             postboxPageActions.generateAIImage();
           }}
@@ -77,9 +81,11 @@ export const ImageForm = () => {
         </Button>
       </Block>
 
-      <BlockTitle className="text-black">A.I 이미지 배경색 설정</BlockTitle>
+      <BlockTitle className="text-black !text-xs sm:!text-sm">
+        A.I 이미지 배경색 설정
+      </BlockTitle>
       <Block strong insetIos outline className="space-y-2">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {modifyColors.map(({ name, value, bgRgba }) => (
             <Button
               large
@@ -91,7 +97,7 @@ export const ImageForm = () => {
                 postboxPageState.choosedModifyModalColor === value
                   ? "border border-primary"
                   : ""
-              } bg-white !text-black shadow-md flex gap-2`}
+              } bg-white !text-black shadow-md flex gap-2 text-2xs sm:text-sm`}
             >
               <span
                 style={{
@@ -107,9 +113,11 @@ export const ImageForm = () => {
         </div>
       </Block>
 
-      <BlockTitle className="text-black">A.I 이미지 스타일 설정</BlockTitle>
+      <BlockTitle className="text-black !text-xs sm:!text-sm">
+        A.I 이미지 스타일 설정
+      </BlockTitle>
       <Block strong insetIos outline className="space-y-2">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {modifyStyles.map(({ name, value }) => (
             <Button
               large
@@ -121,7 +129,7 @@ export const ImageForm = () => {
                 postboxPageState.choosedModifyModalStyle === value
                   ? "border border-primary"
                   : ""
-              } bg-white !text-black shadow-md text-xs break-keep`}
+              } bg-white !text-black shadow-md text-2xs sm:text-sm break-keep`}
             >
               {name}
             </Button>
@@ -129,14 +137,16 @@ export const ImageForm = () => {
         </div>
       </Block>
 
-      <BlockTitle className="text-black">A.I 이미지 프롬프트 설정</BlockTitle>
+      <BlockTitle className="text-black !text-xs sm:!text-sm">
+        A.I 이미지 프롬프트 설정
+      </BlockTitle>
       <List strongIos insetIos>
         <ListInput
           outline
           type="textarea"
-          label="추가적인 이미지 설명 (선택사항)"
-          placeholder="여기에 이미지 설명을 자유롭게 작성해주세요."
-          inputClassName="!h-36 resize-none"
+          label="이미지 설명"
+          placeholder="여기에 생성할 이미지 설명을 자유롭게 작성해주세요."
+          inputClassName="!h-36 resize-none !text-2xs sm:!text-sm leading-relaxed"
           info={`현재 ${postboxPageState.choosedModifyModalAIDescription.length}자 / 200자`}
           onChange={(event) => {
             // * 메세지 길이 200자로 제한

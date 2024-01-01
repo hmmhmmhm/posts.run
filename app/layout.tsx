@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { ClientProvider } from "@/components/ClientProvider";
 import { Analytics } from "@vercel/analytics/react";
 
