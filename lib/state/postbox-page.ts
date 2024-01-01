@@ -5,8 +5,11 @@ import {
 } from "@/components/ModifyModal/constants";
 import { proxy, useSnapshot } from "valtio";
 import { postboxState } from "./postbox";
+import { useEffect } from "react";
+import { useEffectOnce } from "usehooks-ts";
 
 export const postboxPageState = proxy({
+  isServerDataQueried: false,
   isLetterPressed: false,
   isSplineLoaded: false,
   isModifyModalOpen: false,
@@ -165,12 +168,25 @@ export const postboxPageActions = {
 
     postboxPageState.isPublishing = true;
 
-    // TODO 목업 제거
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
     try {
       // TODO 실제 업로드 코드 작성
-      postboxPageState.publishedUrl = "https://posts.run/1234";
+      const response = await fetch("/api/new-year/publish-card", {
+        method: "POST",
+        body: JSON.stringify({
+          message: postboxState.message,
+          to: postboxState.to,
+          images: postboxState.images,
+        }),
+      });
+
+      const { publishUrl } = await response.json();
+      if (publishUrl) {
+        postboxPageState.publishedUrl = publishUrl;
+      } else {
+        alert(
+          "네트워크 문제로 업로드에 실패했습니다. 나중에 다시 시도 부탁드립니다."
+        );
+      }
     } catch (e) {}
 
     postboxPageState.isPublishing = false;
@@ -190,7 +206,42 @@ export const postboxPageActions = {
     }
     postboxPageActions.setIsModifyModalOpen(true);
   },
+  loadServerData(id: string) {
+    if (!id) {
+      postboxPageState.isServerDataQueried = true;
+      return;
+    }
+
+    try {
+      fetch(`/api/new-year/card`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+        cache: "force-cache",
+      }).then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) {
+          console.log("no data");
+          return;
+        }
+        postboxState.message = data.message ?? "";
+        postboxState.to = data.to ?? "";
+        postboxState.images = data.images ?? [];
+        postboxPageState.publishedUrl = `https://posts.run/new-year/${id}`;
+        console.log("loaded??", data);
+      });
+    } catch (e) {}
+    postboxPageState.isServerDataQueried = true;
+  },
 };
 
 export const usePostboxPageState = () =>
   useSnapshot(postboxPageState) as typeof postboxPageState;
+
+export const usePostboxServerData = (id: string) => {
+  useEffectOnce(() => {
+    postboxPageActions.loadServerData(id);
+  });
+};

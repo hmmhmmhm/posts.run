@@ -34,9 +34,9 @@ export const usePostboxInSpline = ({
   useEffect(() => {
     if (postbox.message?.length > 0)
       splineRef.current?.setVariable("User Message", postbox.message);
-  }, [postbox?.message]);
+  }, [postbox?.message, splineRef.current]);
   useEffect(() => {
     if (postbox.to?.length > 0)
       splineRef.current?.setVariable("To Ment", postbox.to);
-  }, [postbox?.to]);
+  }, [postbox?.to, splineRef.current]);
 };

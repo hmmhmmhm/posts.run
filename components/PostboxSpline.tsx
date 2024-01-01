@@ -1,7 +1,5 @@
-import {
-  postboxPageActions,
-  usePostboxPageState,
-} from "@/lib/state/postbox-page";
+"use client";
+import { postboxPageActions } from "@/lib/state/postbox-page";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 import { Application as SplineApplication } from "@splinetool/runtime";
 
@@ -11,7 +9,6 @@ export interface PostboxSplineProps {
 
 export const PostboxSpline = (props: PostboxSplineProps) => {
   const { splineRef } = props;
-  const postboxPageState = usePostboxPageState();
   return (
     <Spline
       scene="https://prod.spline.design/49K5A8xapEdTSHlv/scene.splinecode"
