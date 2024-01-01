@@ -10,7 +10,7 @@ export const CreateMessageForm = () => {
 
   return (
     <Backdrop open={postboxPageState.isModifyModalOpen}>
-      <div className="w-full select-none max-w-[400px] p-8">
+      <div className="postcard-modify-modal w-full select-none max-w-[400px] p-8">
         <App theme="ios" dark={false}>
           <Backdrop open={postboxPageState.isPublishing} className="z-30">
             <div className="flex flex-col items-center space-y-4">
@@ -22,7 +22,7 @@ export const CreateMessageForm = () => {
           <Page className="no-scrollbar rounded-2xl">
             <ModifyModalNavbar />
 
-            <div className="w-full h-full overflow-scroll no-scrollbar pb-4">
+            <div className="w-full mobile-full overflow-scroll no-scrollbar pb-4">
               {postboxPageState.choosedModifyModalSubMenu === "images" && (
                 <ImageForm />
               )}

@@ -35,3 +35,21 @@ body {
 .mobile-full {
   height: calc(var(--vh, 1vh) * 100);
 }
+
+@media (max-width: 390px) {
+  .postcard-modify-modal {
+    zoom: 0.7;
+  }
+}
+
+@media (max-width: 280px) {
+  .postcard-modify-modal {
+    zoom: 0.5;
+  }
+}
+
+@media (max-width: 170px) {
+  .postcard-modify-modal {
+    zoom: 0.3;
+  }
+}
