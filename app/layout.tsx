@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "새해인사 우체통",
     description: "신년인사 카드를 보내보세요!",
-    locale: "ko_KR",
+    locale: "ko",
     type: "website",
     siteName: "새해인사 우체통",
     images: [
@@ -33,7 +33,14 @@ export const metadata: Metadata = {
   twitter: {
     title: "새해인사 우체통",
     description: "신년인사 카드를 보내보세요!",
-    card: "app",
+    images: [
+      {
+        url: "https://posts.run/og.png",
+        width: 1200,
+        height: 630,
+        alt: "새해인사 우체통",
+      },
+    ],
   },
   applicationName: "새해인사 우체통",
   robots: "index,follow",
