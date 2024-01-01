@@ -5,10 +5,23 @@ import {
 } from "@/lib/state/postbox-page";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { Block, BlockTitle, Button, List, ListInput } from "konsta/react";
+import { useEffect } from "react";
 
 export const MessageForm = () => {
   const postboxState = usePostboxState();
   const postboxPageState = usePostboxPageState();
+
+  useEffect(() => {
+    const element = document.querySelector(
+      "#new-year-message > * > * > * > textarea"
+    ) as HTMLTextAreaElement;
+    if (element) element.value = postboxState.message;
+
+    const element2 = document.querySelector(
+      "#new-year-message-to > * > * > * > input"
+    ) as HTMLInputElement;
+    if (element2) element2.value = postboxState.to;
+  }, [postboxPageState.choosedModifyModalSubMenu]);
   return (
     <>
       <Backdrop open={postboxPageState.isCreatingAIMessage} className="z-20">
@@ -22,6 +35,7 @@ export const MessageForm = () => {
       <List strongIos insetIos>
         <ListInput
           outline
+          id="new-year-message-to"
           label="받는 분 (필수)"
           type="text"
           placeholder="당신에게"

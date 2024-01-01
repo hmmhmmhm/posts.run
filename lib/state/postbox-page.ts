@@ -5,7 +5,6 @@ import {
 } from "@/components/ModifyModal/constants";
 import { proxy, useSnapshot } from "valtio";
 import { postboxState } from "./postbox";
-import { useEffect } from "react";
 import { useEffectOnce } from "usehooks-ts";
 
 export const postboxPageState = proxy({
