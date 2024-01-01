@@ -104,10 +104,21 @@ export const postboxPageActions = {
     postboxPageState.isUploadingImages = true;
 
     // TODO 목업 제거
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
 
     try {
       // TODO 실제 A.I 이미지 생성 코드 작성
+      const response = await fetch("/api/new-year/create-image", {
+        method: "POST",
+        body: JSON.stringify({
+          color: postboxPageState.choosedModifyModalColor,
+          style: postboxPageState.choosedModifyModalStyle,
+          additionalPrompt: postboxPageState.choosedModifyModalAIDescription,
+        }),
+      });
+
+      const { generatedImageUrl } = await response.json();
+      if (generatedImageUrl) uploadedImageUrl = generatedImageUrl;
     } catch (e) {}
 
     postboxPageState.isUploadingImages = false;

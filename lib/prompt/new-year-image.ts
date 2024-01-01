@@ -1,0 +1,1 @@
+export const createNewYearImagePrompt = `A New Year's greeting card image, filled with joy and new beginnings. Include traditional symbols like fireworks and a clock at midnight. Use a [$color] color scheme and style it according to [$imageStyle]. Incorporate [$additionalPrompt] for a unique touch, conveying excitement and optimism for the upcoming year.`;
