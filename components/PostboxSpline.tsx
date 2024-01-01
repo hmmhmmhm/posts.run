@@ -28,18 +28,10 @@ export const PostboxSpline = (props: PostboxSplineProps) => {
           event.target.name === "User Message" ||
           event.target.name === "To Ment"
         ) {
-          if (
-            postboxPageState.publishedUrl &&
-            postboxPageState.publishedUrl.length !== 0 &&
-            postboxPageState.publishedUrl !== "https://posts.run/"
-          )
-            return;
-          postboxPageActions.setIsModifyModalOpen(true);
+          postboxPageActions.openModifyModal();
         }
-        if (event.target.name === "Share OK Text") {
-          console.log("공유 기능 동작");
+        if (event.target.name === "Share OK Text")
           postboxPageActions.shareToSNS();
-        }
       }}
       onMouseMove={() => {
         postboxPageActions.setIsSplineLoaded(true);

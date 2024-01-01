@@ -6,7 +6,8 @@ import { usePostboxPageState } from "@/lib/state/postbox-page";
 import { useRef } from "react";
 import { FullImageSlider } from "@/components/FullImageSlider";
 import { PostboxSpline } from "@/components/PostboxSpline";
-import { CreateMessageForm } from "@/components/CreateMessageForm";
+import { CreateMessageForm } from "@/components/ModifyModal/Modal";
+import { PublishWelcomeDialog } from "@/components/PublishWelcomeDialog";
 
 export default function App() {
   const splineRef = useRef<SplineApplication | null>(null);
@@ -31,6 +32,7 @@ export default function App() {
 
       <PostboxSpline splineRef={splineRef} />
       <CreateMessageForm />
+      <PublishWelcomeDialog />
     </main>
   );
 }
