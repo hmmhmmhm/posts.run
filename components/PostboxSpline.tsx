@@ -11,7 +11,7 @@ export const PostboxSpline = (props: PostboxSplineProps) => {
   const { splineRef } = props;
   return (
     <Spline
-      scene="https://prod.spline.design/49K5A8xapEdTSHlv/scene.splinecode"
+      scene="/postbox.splinecode"
       className="absolute"
       onLoad={(spline: SplineApplication) => {
         if (spline) splineRef.current = spline;
