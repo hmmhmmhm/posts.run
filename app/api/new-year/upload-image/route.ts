@@ -12,7 +12,6 @@ export async function POST(request: Request) {
     info: JSON.stringify({
       name: file.name,
     }),
-    compress: false,
   });
 
   return Response.json({ uploadedImageUrl });

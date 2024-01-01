@@ -38,7 +38,6 @@ export async function POST(request: Request) {
         style,
         additionalPrompt,
       }),
-      compress: false,
     });
   } catch (e) {}
 
