@@ -1,7 +1,11 @@
 import { decode } from "pseudo-shuffle";
-import { shuffleConfig } from "../publish-card/route";
 import { createClient } from "@supabase/supabase-js";
 
+const shuffleConfig = {
+  min: 0,
+  max: 36 ** 6 - 1,
+  privateKey: process.env.SHUFFLE_PRIVATE_KEY!,
+};
 export const runtime = "nodejs";
 export async function POST(request: Request) {
   const { id } = await request.json();

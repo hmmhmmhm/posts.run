@@ -4,7 +4,7 @@ import Ajv, { JSONSchemaType } from "ajv";
 const ajv = new Ajv();
 
 export const runtime = "nodejs";
-export interface NewYearCard {
+interface NewYearCard {
   message: string;
   to: string;
   images: string[];
@@ -25,7 +25,7 @@ const schema: JSONSchemaType<NewYearCard> = {
   required: ["message", "to"],
 };
 
-export const shuffleConfig = {
+const shuffleConfig = {
   min: 0,
   max: 36 ** 6 - 1,
   privateKey: process.env.SHUFFLE_PRIVATE_KEY!,
