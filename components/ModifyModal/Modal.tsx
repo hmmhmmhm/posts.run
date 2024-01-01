@@ -10,8 +10,8 @@ export const CreateMessageForm = () => {
 
   return (
     <Backdrop open={postboxPageState.isModifyModalOpen}>
-      <div className="postcard-modify-modal w-full select-none max-w-[400px] p-8">
-        <App theme="ios" dark={false}>
+      <div className="postcard-modify-modal size-full select-none max-w-[400px] p-8">
+        <App theme="ios" dark={false} className="min-h-full">
           <Backdrop open={postboxPageState.isPublishing} className="z-30">
             <div className="flex flex-col items-center space-y-4">
               <CircularProgress className="text-white" size={64} />
